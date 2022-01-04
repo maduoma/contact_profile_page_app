@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 
 //App's entry point
 void main() => runApp(const ContactProfilePage());
-
+//App's main widget
 class ContactProfilePage extends StatelessWidget {
   const ContactProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //Removing debug banner
       debugShowCheckedModeBanner: false,
+      //Scaffold widget as home
       home: Scaffold(
         appBar: AppBar(
           //Adding background color to AppBar
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.purple,
 
           //Adding back arrow for leading property.
           //Back arrow appears at the top-left of AppBar
