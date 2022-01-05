@@ -32,115 +32,141 @@ class ContactProfilePage extends StatelessWidget {
 
       //Scaffold widget as home
       home: Scaffold(
-        appBar: AppBar(
-          //Adding background color to AppBar
-          //backgroundColor: Colors.purple,
-          //backgroundColor: Colors.white,
-
-          //Adding back arrow for leading property.
-          //Back arrow appears at the top-left of AppBar
-          leading: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-          actions: <Widget>[
-            //Adding Star icon for favorting the contact.
-            //This IconButton responds to user's tap,
-            //and prints the message.
-            IconButton(
-              icon: const Icon(Icons.star_border),
-              color: Colors.black,
-              onPressed: () {
-                print("Contact is starred");
-              },
-            ),
-          ],
-        ),
-        body: ListView(
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                //Container for adding Profile picture//UserProfile SizedBox instead of Container
-                SizedBox(
-                  //Container is stretched horizontally
-                  width: double.infinity,
-                  //Image is fetched from url
-                  child: Image.network(
-                    //"https://github.com/ptyagicodecamp/educative_flutter/raw/profile_1/assets/profile.jpg?raw=true",
-                    "https://i.ibb.co/x3bqT0P/dodemy-Logo.jpg",
-                    height: 250,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                //Adding Display Name
-                SizedBox(
-                  height: 60,
-                  child: Row(
-                    //Aligning text to the start of the widget
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const <Widget>[
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          "Dodemy Technology Ltd",
-                          style: TextStyle(fontSize: 30),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                // Adding Divider below the display name
-                const Divider(
-                  color: Colors.grey,
-                  height: 1.0,
-                ),
-                // Container for action items
-                Container(
-                  margin: const EdgeInsets.only(top: 8, bottom: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      //"Call" action item
-                      buildCallButton(),
-                      //"Text" action item
-                      buildTextButton(),
-                      // "Video" action item
-                      buildVideoCallButton(),
-                      // "Email" action item
-                      buildEmailButton(),
-                      // "Directions" action item
-                      buildDirectionsButton(),
-                      // "Pay" action item
-                      buildPayButton(),
-                    ],
-                  ),
-                ),
-                //Adding divider to separate action items from phone numbers
-                const Divider(
-                  color: Colors.grey,
-                  height: 2.0,
-                ),
-                //Adding contact's phone numbers
-                mobilePhoneListTile(),
-                otherPhoneListTile(),
-                //Adding `Divider` widget with grey color
-                const Divider(
-                  color: Colors.grey,
-                  height: 3.0,
-                ),
-                //Email address item
-                emailListTile(),
-                // Divider to separate physical address
-                const Divider(
-                  color: Colors.grey,
-                ),
-                // Contact's home address item
-                addressListTile(),
-              ],
-            ),
-          ],
-        ),
+        appBar: buildAppBarWidget(),
+        body: buildBodyWidget(),
       ),
+    );
+  }
+
+  buildAppBarWidget() {
+    //appBar:
+    //return AppBar(
+    AppBar(
+      //Adding background color to AppBar
+      //backgroundColor: Colors.purple,
+      //backgroundColor: Colors.white,
+
+      //Adding back arrow for leading property.
+      //Back arrow appears at the top-left of AppBar
+      leading: const Icon(
+        Icons.arrow_back,
+        // color: Colors.black,
+      ),
+      actions: <Widget>[
+        //Adding Star icon for favorting the contact.
+        //This IconButton responds to user's tap,
+        //and prints the message.
+        IconButton(
+          icon: const Icon(Icons.star_border),
+          //color: Colors.black,
+          onPressed: () {
+            print("Contact is starred");
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget buildBodyWidget() {
+    //body:
+    return ListView(
+      children: <Widget>[
+        Column(
+          children: <Widget>[
+            //Container for adding Profile picture//UserProfile SizedBox instead of Container
+            SizedBox(
+              //Container is stretched horizontally
+              width: double.infinity,
+              //Image is fetched from url
+              child: Image.network(
+                //"https://github.com/ptyagicodecamp/educative_flutter/raw/profile_1/assets/profile.jpg?raw=true",
+                "https://i.ibb.co/x3bqT0P/dodemy-Logo.jpg",
+                height: 250,
+                fit: BoxFit.cover,
+              ),
+            ),
+            //Adding Display Name
+            SizedBox(
+              height: 60,
+              child: Row(
+                //Aligning text to the start of the widget
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: const <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      "Dodemy Technology Ltd",
+                      style: TextStyle(fontSize: 30),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // Adding Divider below the display name
+            const Divider(
+              color: Colors.grey,
+              height: 1.0,
+            ),
+            // Container for action items
+            Container(
+              margin: const EdgeInsets.only(top: 8, bottom: 8),
+              //Applying local theme to profileActionItems()
+              child: Theme(
+                data: ThemeData(
+                  //Applying iconTheme locally
+                  iconTheme: const IconThemeData(
+                    //NOTE: Try Colors.orange or a different color
+                    color: Colors.pink,
+                  ),
+                ),
+                child: profileActionItems(),
+              ),
+            ),
+            //Adding divider to separate action items from phone numbers
+            const Divider(
+              color: Colors.grey,
+              height: 2.0,
+            ),
+            //Adding contact's phone numbers
+            mobilePhoneListTile(),
+            otherPhoneListTile(),
+            //Adding `Divider` widget with grey color
+            const Divider(
+              color: Colors.grey,
+              height: 3.0,
+            ),
+            //Email address item
+            emailListTile(),
+            // Divider to separate physical address
+            const Divider(
+              color: Colors.grey,
+            ),
+            // Contact's home address item
+            addressListTile(),
+          ],
+        ),
+      ],
+    );
+  }
+
+  //NOTE: Builds the action items widget
+  Widget profileActionItems() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        //"Call" action item
+        buildCallButton(),
+        //"Text" action item
+        buildTextButton(),
+        // "Video" action item
+        buildVideoCallButton(),
+        // "Email" action item
+        buildEmailButton(),
+        // "Directions" action item
+        buildDirectionsButton(),
+        // "Pay" action item
+        buildPayButton(),
+      ],
     );
   }
 
@@ -273,7 +299,7 @@ class ContactProfilePage extends StatelessWidget {
   Widget addressListTile() {
     return ListTile(
       leading: const Icon(Icons.location_on),
-      title: const Text("234 Uduloma St, PHC"),
+      title: const Text("234 Yoduloma St, PHC"),
       subtitle: const Text("home"),
       trailing: IconButton(
         icon: const Icon(Icons.directions),
@@ -283,3 +309,32 @@ class ContactProfilePage extends StatelessWidget {
     );
   }
 }
+
+//This function Container analysis_options be outside the class - class ContactProfilePage extends StatelessWidget
+// buildAppBarWidget() {
+//   //appBar:
+//   return AppBar(
+//     //Adding background color to AppBar
+//     //backgroundColor: Colors.purple,
+//     //backgroundColor: Colors.white,
+//
+//     //Adding back arrow for leading property.
+//     //Back arrow appears at the top-left of AppBar
+//     leading: const Icon(
+//       Icons.arrow_back,
+//       // color: Colors.black,
+//     ),
+//     actions: <Widget>[
+//       //Adding Star icon for favorting the contact.
+//       //This IconButton responds to user's tap,
+//       //and prints the message.
+//       IconButton(
+//         icon: const Icon(Icons.star_border),
+//         //color: Colors.black,
+//         onPressed: () {
+//           print("Contact is starred");
+//         },
+//       ),
+//     ],
+//   );
+// }
