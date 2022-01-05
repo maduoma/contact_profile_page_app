@@ -1,6 +1,6 @@
 # contact_profile_page_app
 
-Contact Profile Page
+Contact Profile Page In Flutter
 
 ## Getting Started
 
