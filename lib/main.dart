@@ -12,7 +12,6 @@ class ContactProfilePage extends StatelessWidget {
     return MaterialApp(
       //Removing debug banner
       debugShowCheckedModeBanner: false,
-
       //theme property
       theme: ThemeData(
         // Define the default brightness and colors for the overall app.
@@ -22,7 +21,7 @@ class ContactProfilePage extends StatelessWidget {
           //color: Colors.white,
           color: Colors.purple,
           iconTheme: IconThemeData(
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         iconTheme: IconThemeData(
@@ -32,40 +31,65 @@ class ContactProfilePage extends StatelessWidget {
 
       //Scaffold widget as home
       home: Scaffold(
-        appBar: buildAppBarWidget(),
+        //appBar: buildAppBarWidget(),
+        appBar: AppBar(
+          //Adding background color to AppBar
+          //backgroundColor: Colors.purple,
+          //backgroundColor: Colors.white,
+
+          //Adding back arrow for leading property.
+          //Back arrow appears at the top-left of AppBar
+          leading: const Icon(
+            Icons.arrow_back,
+            //color: Colors.purple,
+          ),
+          actions: <Widget>[
+            //Adding Star icon for favorting the contact.
+            //This IconButton responds to user's tap,
+            //and prints the message.
+            IconButton(
+              icon: const Icon(Icons.star_border),
+              //color: Colors.black,
+              onPressed: () {
+                print("Contact is starred");
+              },
+            ),
+          ],
+        ),
         body: buildBodyWidget(),
       ),
     );
   }
 
-  buildAppBarWidget() {
-    //appBar:
-    //return AppBar(
-    AppBar(
-      //Adding background color to AppBar
-      //backgroundColor: Colors.purple,
-      //backgroundColor: Colors.white,
-
-      //Adding back arrow for leading property.
-      //Back arrow appears at the top-left of AppBar
-      leading: const Icon(
-        Icons.arrow_back,
-        // color: Colors.black,
-      ),
-      actions: <Widget>[
-        //Adding Star icon for favorting the contact.
-        //This IconButton responds to user's tap,
-        //and prints the message.
-        IconButton(
-          icon: const Icon(Icons.star_border),
-          //color: Colors.black,
-          onPressed: () {
-            print("Contact is starred");
-          },
-        ),
-      ],
-    );
-  }
+  //
+  // Widget buildAppBarWidget() {
+  //   //appBar:
+  //   //Giving error message: The argument type 'Widget' can't be assigned to the parameter type 'PreferredSizeWidget?'
+  //   return AppBar(
+  //     //Adding background color to AppBar
+  //     //backgroundColor: Colors.purple,
+  //     //backgroundColor: Colors.white,
+  //
+  //     //Adding back arrow for leading property.
+  //     //Back arrow appears at the top-left of AppBar
+  //     leading: const Icon(
+  //       Icons.arrow_back,
+  //       //color: Colors.purple,
+  //     ),
+  //     actions: <Widget>[
+  //       //Adding Star icon for favorting the contact.
+  //       //This IconButton responds to user's tap,
+  //       //and prints the message.
+  //       IconButton(
+  //         icon: const Icon(Icons.star_border),
+  //         //color: Colors.black,
+  //         onPressed: () {
+  //           print("Contact is starred");
+  //         },
+  //       ),
+  //     ],
+  //   );
+  // }
 
   Widget buildBodyWidget() {
     //body:
@@ -77,6 +101,7 @@ class ContactProfilePage extends StatelessWidget {
             SizedBox(
               //Container is stretched horizontally
               width: double.infinity,
+              height: 250,
               //Image is fetched from url
               child: Image.network(
                 //"https://github.com/ptyagicodecamp/educative_flutter/raw/profile_1/assets/profile.jpg?raw=true",
@@ -175,9 +200,9 @@ class ContactProfilePage extends StatelessWidget {
     return Column(
       children: <Widget>[
         IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.call,
-            color: Colors.indigo.shade800,
+            //color: Colors.indigo.shade800,
           ),
           onPressed: () {},
         ),
@@ -191,9 +216,9 @@ class ContactProfilePage extends StatelessWidget {
     return Column(
       children: <Widget>[
         IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.message,
-            color: Colors.indigo.shade800,
+            //color: Colors.indigo.shade800,
           ),
           onPressed: () {},
         ),
@@ -206,9 +231,9 @@ class ContactProfilePage extends StatelessWidget {
   Widget buildVideoCallButton() {
     return Column(children: <Widget>[
       IconButton(
-        icon: Icon(
+        icon: const Icon(
           Icons.video_call,
-          color: Colors.indigo.shade800,
+          //color: Colors.indigo.shade800,
         ),
         onPressed: () {},
       ),
@@ -220,9 +245,9 @@ class ContactProfilePage extends StatelessWidget {
   Widget buildEmailButton() {
     return Column(children: <Widget>[
       IconButton(
-        icon: Icon(
+        icon: const Icon(
           Icons.email,
-          color: Colors.indigo.shade800,
+          //color: Colors.indigo.shade800,
         ),
         onPressed: () {},
       ),
@@ -234,9 +259,9 @@ class ContactProfilePage extends StatelessWidget {
   Widget buildDirectionsButton() {
     return Column(children: <Widget>[
       IconButton(
-        icon: Icon(
+        icon: const Icon(
           Icons.directions,
-          color: Colors.indigo.shade800,
+          //color: Colors.indigo.shade800,
         ),
         onPressed: () {},
       ),
@@ -248,9 +273,9 @@ class ContactProfilePage extends StatelessWidget {
   Widget buildPayButton() {
     return Column(children: <Widget>[
       IconButton(
-        icon: Icon(
+        icon: const Icon(
           Icons.attach_money,
-          color: Colors.indigo.shade800,
+          //color: Colors.indigo.shade800,
         ),
         onPressed: () {},
       ),
@@ -309,32 +334,3 @@ class ContactProfilePage extends StatelessWidget {
     );
   }
 }
-
-//This function Container analysis_options be outside the class - class ContactProfilePage extends StatelessWidget
-// buildAppBarWidget() {
-//   //appBar:
-//   return AppBar(
-//     //Adding background color to AppBar
-//     //backgroundColor: Colors.purple,
-//     //backgroundColor: Colors.white,
-//
-//     //Adding back arrow for leading property.
-//     //Back arrow appears at the top-left of AppBar
-//     leading: const Icon(
-//       Icons.arrow_back,
-//       // color: Colors.black,
-//     ),
-//     actions: <Widget>[
-//       //Adding Star icon for favorting the contact.
-//       //This IconButton responds to user's tap,
-//       //and prints the message.
-//       IconButton(
-//         icon: const Icon(Icons.star_border),
-//         //color: Colors.black,
-//         onPressed: () {
-//           print("Contact is starred");
-//         },
-//       ),
-//     ],
-//   );
-// }
