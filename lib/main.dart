@@ -3,6 +3,33 @@ import 'package:flutter/material.dart';
 //App's entry point
 void main() => runApp(const ContactProfilePage());
 
+//NEW CODE: Separate class to store themes
+class MyAppThemes {
+  //Method to provide light theme
+  static ThemeData appThemeLight() {
+    return ThemeData(
+      // Define the default brightness and colors for the overall app.
+      brightness: Brightness.light,
+
+      //Theme for app bar
+      appBarTheme: const AppBarTheme(
+        //AppBar's color
+        color: Colors.purple,
+        //Theme for AppBar's icons
+        iconTheme: IconThemeData(
+          //Dark color icons on light colored background
+          color: Colors.white,
+        ),
+      ),
+
+      //Theme for app's icons
+      iconTheme: IconThemeData(
+        color: Colors.indigo.shade800,
+      ),
+    );
+  }
+}
+
 //App's main widget
 class ContactProfilePage extends StatelessWidget {
   const ContactProfilePage({Key? key}) : super(key: key);
@@ -12,26 +39,32 @@ class ContactProfilePage extends StatelessWidget {
     return MaterialApp(
       //Removing debug banner
       debugShowCheckedModeBanner: false,
+
+      //Applying theme to app calling MyAppThemes's method
+      theme: MyAppThemes.appThemeLight(),
+
       //theme property
-      theme: ThemeData(
-        // Define the default brightness and colors for the overall app.
-        brightness: Brightness.light,
-        appBarTheme: const AppBarTheme(
-          //Try a different color
-          //color: Colors.white,
-          color: Colors.purple,
-          iconTheme: IconThemeData(
-            color: Colors.white,
-          ),
-        ),
-        iconTheme: IconThemeData(
-          color: Colors.indigo.shade800,
-        ),
-      ),
+      // theme: ThemeData(
+      //   // Define the default brightness and colors for the overall app.
+      //   brightness: Brightness.light,
+      //   appBarTheme: const AppBarTheme(
+      //     //Try a different color
+      //     //color: Colors.white,
+      //     color: Colors.purple,
+      //     iconTheme: IconThemeData(
+      //       color: Colors.white,
+      //     ),
+      //   ),
+      //   iconTheme: IconThemeData(
+      //     color: Colors.indigo.shade800,
+      //   ),
+      // ),
 
       //Scaffold widget as home
       home: Scaffold(
+        //Creating app bar
         //appBar: buildAppBarWidget(),
+        //Creating app bar
         appBar: AppBar(
           //Adding background color to AppBar
           //backgroundColor: Colors.purple,
@@ -56,12 +89,13 @@ class ContactProfilePage extends StatelessWidget {
             ),
           ],
         ),
+        //Creating body part of the app
         body: buildBodyWidget(),
       ),
     );
   }
 
-  //
+  // //Provides app bar implementation
   // Widget buildAppBarWidget() {
   //   //appBar:
   //   //Giving error message: The argument type 'Widget' can't be assigned to the parameter type 'PreferredSizeWidget?'
@@ -91,6 +125,7 @@ class ContactProfilePage extends StatelessWidget {
   //   );
   // }
 
+  //Creating body part of the app
   Widget buildBodyWidget() {
     //body:
     return ListView(
@@ -174,7 +209,8 @@ class ContactProfilePage extends StatelessWidget {
     );
   }
 
-  //NOTE: Builds the action items widget
+
+  //NOTE: Builds the action items widget //Builds custom action items widget
   Widget profileActionItems() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -195,7 +231,7 @@ class ContactProfilePage extends StatelessWidget {
     );
   }
 
-  //Adding "Call" action item
+  //Adding "Call" action item //Call button of action item widget
   Widget buildCallButton() {
     return Column(
       children: <Widget>[
