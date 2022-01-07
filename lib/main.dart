@@ -169,6 +169,7 @@ class _ContactProfilePageState extends State<ContactProfilePage> {
         //appBar: buildAppBarWidget(),
         //Creating app bar
         appBar: AppBar(
+          title: const Text("Contact Profile Page"),
           //Adding background color to AppBar
           //backgroundColor: Colors.purple,
           //backgroundColor: Colors.white,
