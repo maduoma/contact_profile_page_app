@@ -2,11 +2,13 @@
 
 Contact Profile Page In Flutter
 
+## Light Theme
 ![Light Theme](https://github.com/maduoma/contact_profile_page_app/blob/master/Light.png)
 
-![Light Theme](https://github.com/maduoma/contact_profile_page_app/blob/master/Dark.png)
+### Dark Theme
+![Dark Theme](https://github.com/maduoma/contact_profile_page_app/blob/master/Dark.png)
 
-## Getting Started
+#### Getting Started
 
 This project is a starting point for a Flutter application.
 
